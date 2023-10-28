@@ -1,0 +1,8 @@
+{
+  "name": "@reactresume/workspace",
+  "workspaces": [
+    "packages/server",
+    "packages/jsonresume-parser",
+    "packages/template"
+  ]
+}
