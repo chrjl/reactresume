@@ -15,3 +15,32 @@ and shared libraries:
 
 See the [wiki](https://github.com/chrjl/reactresume--workspace/wiki) for more.
 
+## Dev environment
+
+First, clone this repo and fetch workspace packages (submodules) and check for updates to submodules.
+
+```console
+git clone --recurse-submodules git@github.com:chrjl/reactresume--workspace.git
+```
+
+or
+
+```console
+git clone git@github.com:chrjl/reactresume--workspace.git
+
+cd reactresume--workspace/
+git submodule update --init
+```
+
+- Pull updates to submodules
+
+  ```console
+  git submodule update --remote
+  ```
+
+To work on individual projects, checkout the `main` branch or branch off of it.
+
+```console
+git submodule foreach git checkout main
+```
+
