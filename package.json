@@ -1,10 +1,11 @@
 {
   "name": "@reactresume/workspace",
-  "workspaces": [
-    "packages/types",
-    "packages/server",
-    "packages/jsonresume-parser",
-    "packages/template",
-    "packages/components"
-  ]
+  "scripts": {
+    "build": "npx tsc -p packages/types; npx tsc -p packages/components; npx tsc -p packages/jsonresume-parser; npx tsc -p packages/template",
+    "serve": "npm run dev -w packages/server"
+  },
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "workspaces": [ "packages/*" ]
 }
