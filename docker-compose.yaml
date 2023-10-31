@@ -1,0 +1,16 @@
+services:
+  server:
+    image: node:lts-slim
+    ports:
+      - target: 5173
+        published: 5173
+    volumes:
+      - type: bind
+        source: .
+        target: /home/node/app
+    working_dir: /home/node/app
+    tty: true
+    entrypoint:
+      - npm
+      - run
+      - serve
