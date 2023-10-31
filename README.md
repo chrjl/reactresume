@@ -44,3 +44,34 @@ To work on individual projects, checkout the `main` branch or branch off of it.
 git submodule foreach git checkout main
 ```
 
+## Build the project
+
+Install dependencies
+
+- `pnpm install`: By default, the project is set up as a [`pnpm` workspace](https://pnpm.io/workspaces), so it is simplest to use `pnpm` to install dependencies and resolve workspace-internal dependencies.
+
+  ```console
+  npx pnpm install
+  ```
+
+- `npm install`: The provided `package.json` also defines [`npm` workspace**s**](https://docs.npmjs.com/cli/v7/using-npm/workspaces), which will install all subproject (workspace) packages and their dependencies into the project root. `npm install` does not support the `workspace` protocol, so it is necessary to go through each workspace package and remove internal dependencies (defined with `workspace:*`). Then install packages with the `--workspace=true` flag.
+
+  ```console
+  npm install --ws
+  ```
+
+Compile TypeScript: dependency errors might be raised by `tsc` because of the order that projects are compiled, and most likely can be ignored
+
+```console
+npm run build
+```
+
+- or do it manually
+
+  ```console
+  npx tsc -p packages/types
+  npx tsc -p packages/components
+  npx tsc -p packages/jsonresume-parser
+  npx tsc -p packages/template
+  ```
+
