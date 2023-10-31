@@ -2,7 +2,7 @@
 
 Import [JSON Resume](https://jsonresume.org) data and render a styled and formatted resume out of React components. Refactoring of <https://github.com/chrjl/jsonresume--react-generator> into TypeScript and a metarepo project structure.
 
-This metarepo consists of the following subprojects
+This metarepo consists of the following subprojects:
 
 - [`@reactresume/server`](https://github.com/chrjl/reactresume--server)
 - [`@reactresume/template`](https://github.com/chrjl/reactresume--template)
@@ -17,7 +17,7 @@ See the [wiki](https://github.com/chrjl/reactresume--workspace/wiki) for more.
 
 ## Dev environment
 
-First, clone this repo and fetch workspace packages (submodules) and check for updates to submodules.
+First, clone this repo, fetch workspace packages (submodules), and check for updates to submodules.
 
 ```console
 git clone --recurse-submodules git@github.com:chrjl/reactresume--workspace.git
@@ -38,7 +38,7 @@ git submodule update --init
   git submodule update --remote
   ```
 
-To work on individual projects, checkout the `main` branch or branch off of it.
+To work on individual projects, checkout the `main` branch and (optionally) branch off of it.
 
 ```console
 git submodule foreach git checkout main
@@ -54,13 +54,18 @@ Install dependencies
   npx pnpm install
   ```
 
-- `npm install`: The provided `package.json` also defines [`npm` workspace**s**](https://docs.npmjs.com/cli/v7/using-npm/workspaces), which will install all subproject (workspace) packages and their dependencies into the project root. `npm install` does not support the `workspace` protocol, so it is necessary to go through each workspace package and remove internal dependencies (defined with `workspace:*`). Then install packages with the `--workspace=true` flag.
+- `npm install`: The provided `package.json` also defines [`npm` workspace**s**](https://docs.npmjs.com/cli/v7/using-npm/workspaces), which will install all subproject (workspace) packages and their dependencies into the project root, if used with the `--workspace=true` flag.
+
+  > **Warning**
+  > `npm install` does not support the `workspace` protocol, so it will be necessary to go through each workspace package and remove internal dependencies (defined with `workspace:*`).
 
   ```console
   npm install --ws
   ```
 
-Compile TypeScript: dependency errors might be raised by `tsc` because of the order that projects are compiled, and most likely can be ignored
+Compile TypeScript
+> **Note**
+> Dependency errors might be raised by `tsc` because of the order that projects are compiled, and most likely can be ignored.
 
 ```console
 npm run build
@@ -73,5 +78,19 @@ npm run build
   npx tsc -p packages/components
   npx tsc -p packages/jsonresume-parser
   npx tsc -p packages/template
+  ```
+
+## Spin up a dev server
+
+Spin up the dev server from the `server` package.
+
+```console
+npm run dev -w packages/server
+```
+
+- Use the provided Docker Compose file to run the server in a container (after installing dependencies)
+
+  ```
+  docker compose up -d
   ```
 
