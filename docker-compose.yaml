@@ -13,4 +13,4 @@ services:
     entrypoint:
       - npm
       - run
-      - serve
+      - dev
