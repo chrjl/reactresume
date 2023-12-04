@@ -3,7 +3,7 @@ services:
     image: node:lts-slim
     ports:
       - target: 5173
-        published: 5173
+        published: ${REACTRESUME_PORT:-5173}
     volumes:
       - type: bind
         source: .

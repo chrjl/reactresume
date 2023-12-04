@@ -50,10 +50,6 @@ Install dependencies
 
 - `pnpm install`: By default, the project is set up as a [`pnpm` workspace](https://pnpm.io/workspaces), so it is simplest to use `pnpm` to install dependencies and resolve workspace-internal dependencies.
 
-  ```console
-  npx pnpm install
-  ```
-
 - `npm install`: The provided `package.json` also defines [`npm` workspace**s**](https://docs.npmjs.com/cli/v7/using-npm/workspaces), which will install all subproject (workspace) packages and their dependencies into the project root, if used with the `--workspace=true` flag.
 
   > **Warning**
@@ -88,9 +84,9 @@ Spin up the dev server from the `server` package.
 npm run dev -w packages/server
 ```
 
-- Use the provided Docker Compose file to run the server in a container (after installing dependencies)
+- Use the provided Docker Compose file to run the server in a container (after installing dependencies). The published port can be specified with the `$REACTRESUME_PORT` environment variable (default 5173).
 
   ```
-  docker compose up -d
+  REACTRESUME_PORT=8080 docker compose up -d
   ```
 
