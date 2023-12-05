@@ -10,7 +10,7 @@
     "dev-tsc/template": "npm run dev -w packages/template --if-present",
     "dev-tsc/server": "npm run dev -w packages/server --if-present",
     "build-deps": "npx tsc -p packages/types; npx tsc -p packages/components; npx tsc -p packages/jsonresume-parser; npx tsc -p packages/template",
-    "build-app": "vite build packages/server --outDir ../../dist --emptyOutDir"
+    "build-app": "vite build --config vite.config.js"
   },
   "dependencies": {
     "concurrently": "^8.2.2",
