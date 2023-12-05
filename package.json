@@ -1,18 +1,23 @@
 {
   "name": "@reactresume/workspace",
   "scripts": {
-    "build": "npx tsc -p packages/types; npx tsc -p packages/components; npx tsc -p packages/jsonresume-parser; npx tsc -p packages/template",
+    "build": "npm run build-deps; npm run build-app",
     "serve": "npm run dev-server",
     "dev": "concurrently -c auto \"npm:dev-*\"",
     "dev-tsc/types": "npm run dev -w packages/types --if-present",
     "dev-tsc/components": "npm run dev -w packages/components --if-present",
     "dev-tsc/parser": "npm run dev -w packages/jsonresume-parser --if-present",
     "dev-tsc/template": "npm run dev -w packages/template --if-present",
-    "dev-tsc/server": "npm run dev -w packages/server --if-present"
+    "dev-tsc/server": "npm run dev -w packages/server --if-present",
+    "build-deps": "npx tsc -p packages/types; npx tsc -p packages/components; npx tsc -p packages/jsonresume-parser; npx tsc -p packages/template",
+    "build-app": "vite build packages/server --outDir ../../dist --emptyOutDir"
   },
   "dependencies": {
     "concurrently": "^8.2.2",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.2",
+    "vite": "^5.0.4"
   },
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ]
 }
