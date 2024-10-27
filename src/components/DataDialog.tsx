@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+
+import { DataContext } from '../contexts/DataContext';
 
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
@@ -16,6 +18,8 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 
 export default function DataDialog() {
+  const [jsonResume, setJsonResume] = useContext(DataContext);
+
   const [open, setOpen] = useState(false);
   const [source, setSource] = useState<'url' | 'file' | null>(null);
   const [url, setUrl] = useState<string>('');
