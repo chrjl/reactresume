@@ -2,7 +2,17 @@
 
 A fully client-side React app to process and render [JSON Resume](https://jsonresume.org/schema) data into a printable document. The app is built using [Material UI](https://mui.com/material-ui/) components. The document is rendered with components from a bespoke React component library and styled with custom CSS, CSS-in-JS for interactive styling, and self-hosted fonts from [Fontsource](https://fontsource.org).
 
+The project is scaffolded as a [pnpm workspace](https://pnpm.io/workspaces) monorepo, with the following subproject dependencies installed into the `packages/` directory:
+
+- [`@reactresume/types`](https://github.com/chrjl/reactresume--types)
+
 ## Development
+
+### Build workspace packages
+
+```
+pnpm run -r [--filter @reactresume/types] build
+```
 
 ### Run the dev server
 
@@ -10,6 +20,13 @@ Run the Vite server:
 
 ```
 npm run dev
+```
+
+### Push workspace packages (using `git subtree`)
+
+```
+git remote add types ...
+git subtree push --prefix packages/types types main
 ```
 
 ## Build and deploy
