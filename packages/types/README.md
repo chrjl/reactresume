@@ -2,15 +2,15 @@
 
 Exports shared types to describe `reactresume` data.
 
-- `JSONResumeObject`: describes the [JSON Resume schema](https://jsonresume.org/schema), with some extensions/enhancements described below
-- `ResumeObject`: describes the standardized schema of `reactresume`, returned after passing the JSON Resume through the project's parser. Sections are composed of `ResumeEntry` objects.
+- `JSONResumeObject`: describes the [JSON Resume schema](https://jsonresume.org/schema)
+- `ResumeObject`: describes the standardized schema of `reactresume`, returned after parsing the JSON Resume. Sections are composed of `ResumeEntry` objects.
   - `ResumeEntry`: standardized object schema consumed by the component library
 
 ## Exports
 
 ### `JSONResumeObject`
 
-Each section (besides Basics) is an array of objects namespaced under `JSONResumeEntry`. For example, `JSONResumeObject.skills` is an array of `JSONResumeEntry.Skill` objects.
+Each section is an array of objects namespaced under `JSONResumeEntry`. For example, `JSONResumeObject.skills` is an array of `JSONResumeEntry.Skill` objects.
 
 #### Included sections and extensions to schema
 
@@ -23,32 +23,19 @@ Each section (besides Basics) is an array of objects namespaced under `JSONResum
        : Modify the `url` field to accept either string (original) or array
 - [x] Work  
        : Add `department`, `location` fields
-- [x] Experience?:
 - [ ] Interests
 - [ ] Volunteer
 - [ ] Awards
 - [ ] Publications
 - [ ] Interests
 
-New sections:
-
-- [x] Experience  
-       : Uses the `Work` schema
-
-#### Extensions to `JSONResumeEntry`
-
-Each object described under `JSONResumeEntry` is extended to include the following metadata described by the `JSONResumeEntryMeta` interface.
-
-- `_display (boolean): true`: whether to include the entry during parsing
-- `_tags (string[])`: for grouping entries within the same section
-
 ### `ResumeObject`
 
-Each resume section is described by an array of standardized `ResumeEntry` objects. The subsections of each entry can be strings or React components. Any parsing of Markdown (e.g. via `react-markdown` components) or shaping via custom components (e.g. for custom list styles) should be done by the parser.
+Each resume section is described by an array of standardized `ResumeEntry` objects. The subsections of each entry should all be arrays of strings. Any parsing of Markdown (e.g. via `react-markdown` components) or shaping via custom components (e.g. for custom list styles) should be done post-parsing.
 
 #### `ResumeEntry`
 
-Supports the following fields, all of which are of type `React.ReactNode`:
+Supports the following fields, all of which should be of type `string[]`:
 
 - title
 - subtitle
