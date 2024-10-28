@@ -1,15 +1,14 @@
-export default interface JSONResumeObject {
+export interface JSONResumeObject {
   basics?: JSONResumeBasics;
-  skills?: JSONResumeEntry.Skill[];
-  languages?: JSONResumeEntry.Language[];
-  education?: JSONResumeEntry.Education[];
-  certificates?: JSONResumeEntry.Certificate[];
-  projects?: JSONResumeEntry.Project[];
-  work?: JSONResumeEntry.Work[];
-  experience?: JSONResumeEntry.Work[];
+  skills?: JSONResumeEntry['Skill'][];
+  languages?: JSONResumeEntry['Language'][];
+  education?: JSONResumeEntry['Education'][];
+  certificates?: JSONResumeEntry['Certificate'][];
+  projects?: JSONResumeEntry['Project'][];
+  work?: JSONResumeEntry['Work'][];
 }
 
-export interface JSONResumeBasics {
+interface JSONResumeBasics {
   name: string;
   label?: string;
   email: string;
@@ -24,32 +23,25 @@ export interface JSONResumeBasics {
     region: string;
   };
   profiles?: {
-    _display?: boolean;
     network: string;
     username?: string;
     url: string;
   }[];
 }
 
-export interface JSONResumeMeta {
-  _display?: boolean;
-}
-
-export namespace JSONResumeEntry {
-  export interface Basics extends JSONResumeBasics {}
-
-  export interface Skill extends JSONResumeMeta {
+interface JSONResumeEntry {
+  Skill: {
     name: string;
     level?: string;
     keywords?: string[];
-  }
+  };
 
-  export interface Language extends JSONResumeMeta {
+  Language: {
     language: string;
     fluency?: string;
-  }
+  };
 
-  export interface Education extends JSONResumeMeta {
+  Education: {
     institution: string;
     url?: string;
     area?: string;
@@ -58,16 +50,16 @@ export namespace JSONResumeEntry {
     endDate?: string;
     score?: string;
     courses?: string[];
-  }
+  };
 
-  export interface Certificate extends JSONResumeMeta {
+  Certificate: {
     name: string;
     date?: string;
     issuer?: string;
     url?: string;
-  }
+  };
 
-  export interface Project extends JSONResumeMeta {
+  Project: {
     name: string;
     startDate?: string;
     endDate?: string;
@@ -75,9 +67,9 @@ export namespace JSONResumeEntry {
     highlights?: string[];
     url?: string | string[];
     keywords?: string[];
-  }
+  };
 
-  export interface Work extends JSONResumeMeta {
+  Work: {
     name: string;
     department?: string;
     location?: string;
@@ -87,5 +79,5 @@ export namespace JSONResumeEntry {
     endDate?: string;
     summary?: string;
     highlights?: string[];
-  }
+  };
 }
