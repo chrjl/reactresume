@@ -1,6 +1,4 @@
-import JSONResumeBasics from './jsonresume-schema';
-
-export default interface ResumeObject {
+export interface ResumeObject {
   basics?: ResumeEntry[];
   skills?: ResumeEntry[];
   languages?: ResumeEntry[];
@@ -8,13 +6,12 @@ export default interface ResumeObject {
   certificates?: ResumeEntry[];
   projects?: ResumeEntry[];
   work?: ResumeEntry[];
-  experience?: ResumeEntry[];
 }
 
 export interface ResumeEntry {
-  title: React.ReactNode;
-  subtitle?: React.ReactNode;
-  note?: React.ReactNode;
-  description?: React.ReactNode;
-  highlights?: React.ReactNode;
+  title: string | string[];
+  subtitle?: string | string[];
+  note?: string | string[];
+  description?: string | string[];
+  highlights?: string | string[];
 }
