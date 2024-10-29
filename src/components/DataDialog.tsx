@@ -19,7 +19,7 @@ import { DataContext } from '../contexts/DataContext';
 import parseObject from '../utilities/parse-json5-yaml';
 
 export default function DataDialog() {
-  const [jsonResume, setJsonResume] = useContext(DataContext);
+  const [, setJsonResume] = useContext(DataContext);
 
   const [open, setOpen] = useState(false);
   const [source, setSource] = useState<'url' | 'file' | null>(null);
@@ -164,7 +164,7 @@ interface ActionButtonProps {
 
 function ActionButton({ onClick }: ActionButtonProps) {
   const fabStyle = {
-    position: 'absolute',
+    position: 'fixed',
     bottom: 16,
     right: 16,
   };
