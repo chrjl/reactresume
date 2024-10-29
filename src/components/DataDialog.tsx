@@ -1,7 +1,5 @@
 import { useState, useContext } from 'react';
 
-import { DataContext } from '../contexts/DataContext';
-
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -16,6 +14,9 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+
+import { DataContext } from '../contexts/DataContext';
+import parseObject from '../utilities/parse-json5-yaml';
 
 export default function DataDialog() {
   const [jsonResume, setJsonResume] = useContext(DataContext);
@@ -47,14 +48,26 @@ export default function DataDialog() {
     setUrl(e.currentTarget.value);
   };
 
-  const handleSubmitFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.files);
+  const handleSubmitFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.currentTarget.files) {
+      return;
+    }
+
+    const file = e.currentTarget.files[0];
+    const text = await file.text();
+    const data = parseObject(text);
+
+    setJsonResume(data);
 
     handleClose();
   };
 
-  const handleSubmitUrl = () => {
-    console.log(url);
+  const handleSubmitUrl = async () => {
+    const res = await fetch(url);
+    const text = await res.text();
+    const data = parseObject(text);
+
+    setJsonResume(data);
 
     handleClose();
   };
