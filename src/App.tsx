@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { DataContext } from './contexts/DataContext';
 
+import type { JSONResumeObject } from '@reactresume/types';
+
 import AppBar from './components/AppBar';
 import DataDialog from './components/DataDialog';
 
 function App() {
-  const [jsonResume, setJsonResume] = useState(null);
+  const [jsonResume, setJsonResume] = useState({} as JSONResumeObject);
 
   return (
     <DataContext.Provider value={[jsonResume, setJsonResume]}>
