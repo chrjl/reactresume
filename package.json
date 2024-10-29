@@ -16,12 +16,14 @@
     "@fontsource/roboto": "^5.1.0",
     "@mui/icons-material": "^6.1.5",
     "@mui/material": "^6.1.5",
+    "json5": "^2.2.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "yaml": "^2.6.0"
   },
   "devDependencies": {
-    "@reactresume/types": "*",
     "@eslint/js": "^9.13.0",
+    "@reactresume/types": "*",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
