@@ -44,8 +44,8 @@ interface JSONResumeEntry {
   Education: {
     institution: string;
     url?: string;
-    area?: string;
-    studyType?: string;
+    area: string;
+    studyType: string;
     startDate?: string;
     endDate?: string;
     score?: string;
@@ -73,7 +73,7 @@ interface JSONResumeEntry {
     name: string;
     department?: string;
     location?: string;
-    position?: string;
+    position: string;
     url?: string;
     startDate?: string;
     endDate?: string;
