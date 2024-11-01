@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@reactresume/components": "*",
     "@reactresume/types": "*",
     "@reactresume/jsonresume-parser": "*",
     "@types/react": "^18.3.12",
