@@ -6,6 +6,7 @@ The project is scaffolded as a [pnpm workspace](https://pnpm.io/workspaces) mono
 
 - [`@reactresume/types`](https://github.com/chrjl/reactresume--types)
 - [`@reactresume/jsonresume-parser`](https://github.com/chrjl/reactresume--jsonresume-parser)
+- [`@reactresume/components`](https://github.com/chrjl/reactresume--components)
 
 ## Development
 
