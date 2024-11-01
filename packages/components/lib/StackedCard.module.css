@@ -1,0 +1,23 @@
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 2em;
+
+  & .title {
+    font-size: 13pt;
+    font-weight: bold;
+  }
+}
+
+.body {
+  margin-top: 0.5em;
+
+  & ul.highlights {
+    margin: 0;
+  }
+
+  & .note {
+    margin-top: 0.5em;
+  }
+}

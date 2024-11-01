@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  grid-template-columns: max-content auto;
+  align-items: top;
+  column-gap: 2em;
+  row-gap: 0.25em;
+}
+
+.term {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.description {
+  margin-left: 0;
+}

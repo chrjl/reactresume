@@ -1,0 +1,11 @@
+.example {
+  font-family: Roboto;
+  font-size: 10pt;
+  background-color: lightgray;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
