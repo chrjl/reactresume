@@ -1,0 +1,37 @@
+.heading {
+  & .title {
+    font-size: 13pt;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  & ul.subtitle {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    column-gap: 0.75em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #444;
+  }
+}
+
+.body {
+  margin-top: 0.5em;
+
+  & ul.highlights {
+    margin: 0;
+    padding-left: 1.25em;
+  }
+
+  & ul.note {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+}

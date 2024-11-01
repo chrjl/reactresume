@@ -1,0 +1,17 @@
+.title {
+  font-size: 22pt;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.highlights,
+.description {
+  margin: 0;
+}
