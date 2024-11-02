@@ -6,6 +6,8 @@ import type { JSONResumeObject } from '@reactresume/types';
 import AppBar from './components/AppBar';
 import DataDialog from './components/DataDialog';
 import FloatingActionButton from './components/FloatingActionButton';
+import Page from './components/Page';
+import Document from './components/Document';
 
 function App() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -17,7 +19,11 @@ function App() {
   return (
     <DataContext.Provider value={[jsonResume, setJsonResume]}>
       <AppBar />
-      Hello world
+
+      <Page>
+        <Document />
+      </Page>
+
       <DataDialog open={isDialogOpen} handleClose={handleCloseDialog} />
       <FloatingActionButton onClick={handleOpenDialog} />
     </DataContext.Provider>
