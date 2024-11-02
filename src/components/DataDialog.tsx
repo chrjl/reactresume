@@ -25,7 +25,7 @@ export default function DataDialog({ open, handleClose }: Props) {
   const [, setJsonResume] = useContext(DataContext);
 
   const [source, setSource] = useState<'url' | 'file' | null>(null);
-  const [url, setUrl] = useState<string>('');
+  const [url, setUrl] = useState<string>('sample.json');
 
   const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
@@ -70,7 +70,9 @@ export default function DataDialog({ open, handleClose }: Props) {
       <DialogTitle>Load JSON Resume</DialogTitle>
       <DialogContent>
         <SourceRadioGroup value={source} onChange={handleChangeSource} />
-        {source === 'url' ? <URLTextField onChange={handleChangeURL} /> : null}
+        {source === 'url' ? (
+          <URLTextField value={url} onChange={handleChangeURL} />
+        ) : null}
       </DialogContent>
       <DialogActions>
         {source === 'url' ? (
@@ -105,10 +107,11 @@ function SourceRadioGroup({ value, onChange }: SourceRadioGroupProps) {
 }
 
 interface URLTextFieldProps {
+  value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function URLTextField({ onChange }: URLTextFieldProps) {
+function URLTextField({ value, onChange }: URLTextFieldProps) {
   return (
     <Box
       component="form"
@@ -117,7 +120,12 @@ function URLTextField({ onChange }: URLTextFieldProps) {
       autoComplete="off"
       onSubmit={(e) => e.preventDefault()}
     >
-      <TextField label="URL" variant="outlined" onChange={onChange} />
+      <TextField
+        label="URL"
+        variant="outlined"
+        value={value}
+        onChange={onChange}
+      />
     </Box>
   );
 }
