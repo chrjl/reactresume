@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function HorizontalList({ variant, children, className }: Props) {
-  if (!Array.isArray(children)) {
+  if (!Array.isArray(children) || children.length === 1) {
     if (variant === 'right') {
       return (
         <div className={classnames(className, styles.container, styles.right)}>
