@@ -4,6 +4,7 @@
   align-items: top;
   column-gap: 2em;
   row-gap: 0.25em;
+  margin: 0;
 }
 
 .term {

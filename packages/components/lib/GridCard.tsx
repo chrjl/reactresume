@@ -26,12 +26,12 @@ export default function GridCard({
 
   return (
     <div className={classnames(styles.container, className)}>
-      <div className={classnames(styles.heading, 'heading')}>
-        <span className={classnames(styles.title, 'title', 'uppercase')}>
+      <div className={styles.header}>
+        <span className={classnames(styles.title, 'title', 'bold')}>
           {title.join(' ')}
         </span>
         {subtitle.length ? (
-          <ul className={classnames(styles.subtitle, 'subtitle', 'uppercase')}>
+          <ul className={classnames(styles.subtitle, 'subtitle')}>
             {subtitle.map((entry, index) => (
               <li key={index}>{entry}</li>
             ))}

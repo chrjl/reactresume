@@ -27,11 +27,13 @@ export default function HeadingCard({
   return (
     <div className={className}>
       {title.length ? (
-        <h1 className={classnames(styles.title, 'title')}>{title.join(' ')}</h1>
+        <h1 className={classnames(styles.title, 'heading')}>
+          {title.join(' ')}
+        </h1>
       ) : null}
 
       {subtitle.length ? (
-        <h2 className={classnames(styles.subtitle, 'subtitle')}>
+        <h2 className={classnames(styles.subtitle, 'heading')}>
           {subtitle.join(' ')}
         </h2>
       ) : null}

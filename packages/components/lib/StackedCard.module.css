@@ -1,7 +1,7 @@
-.heading {
+.header {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-end;
   column-gap: 2em;
 
   & .title {
@@ -11,10 +11,12 @@
 }
 
 .body {
-  margin-top: 0.5em;
+  margin-top: 0.25em;
 
   & ul.highlights {
     margin: 0;
+    padding-left: 2.5em;
+    list-style-type: disc;
   }
 
   & .note {

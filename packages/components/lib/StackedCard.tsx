@@ -26,8 +26,8 @@ export default function StackedCard({
 
   return (
     <div className={classnames(styles.container, className)}>
-      <div className={classnames(styles.heading, 'heading')}>
-        <span className={classnames(styles.title, 'title')}>
+      <div className={styles.header}>
+        <span className={classnames(styles.title, 'title', 'bold')}>
           {title.join(' ')}
         </span>
         {subtitle.length ? (

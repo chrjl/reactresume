@@ -12,7 +12,7 @@
     box-sizing: border-box;
     width: 1.5em;
     text-align: center;
-    vertical-align: text-bottom;
+    vertical-align: baseline;
     font-weight: 600;
   }
 }

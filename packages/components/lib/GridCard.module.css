@@ -1,6 +1,6 @@
-.heading {
+.header {
   & .title {
-    font-size: 13pt;
+    font-size: 11pt;
     font-weight: bold;
     text-transform: uppercase;
   }
@@ -16,16 +16,15 @@
     padding: 0;
     text-transform: uppercase;
     font-weight: bold;
-    color: #444;
+    color: #4b5563;
   }
 }
 
 .body {
-  margin-top: 0.5em;
-
   & ul.highlights {
     margin: 0;
     padding-left: 1.25em;
+    list-style-type: disc;
   }
 
   & ul.note {
@@ -33,5 +32,6 @@
     padding: 0;
     margin-top: 0.5em;
     margin-bottom: 0;
+    font-size: 90%;
   }
 }

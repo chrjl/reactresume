@@ -15,7 +15,7 @@ export default function DefinitionTable({ data, className }: Props) {
     <dl className={classnames(styles.container, className)}>
       {data.map(({ title, description }, index) => (
         <Fragment key={index}>
-          <dt className={classnames(styles.term, 'uppercase')}>
+          <dt className={classnames(styles.term, 'bold')}>
             {Array.isArray(title) ? title.join(' ') : title}
           </dt>
           {description && (
