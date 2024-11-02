@@ -39,10 +39,12 @@ export default function Document() {
         />
       ) : null}
 
-      <DescriptionTable
-        className={styles.table}
-        data={[skills, languages].flat().filter(Boolean)}
-      />
+      {((languages && languages.length) || (skills && skills.length)) ? (
+        <DescriptionTable
+          className={styles.table}
+          data={[skills || [], languages || []].flat().filter(Boolean)}
+        />
+      ) : null}
 
       {projects && projects.length ? (
         <div className="projects">
@@ -64,7 +66,9 @@ export default function Document() {
 
       {work && work.length ? (
         <div className="work">
-          <h1 className={classnames(styles.heading, 'heading')}>Work experience</h1>
+          <h1 className={classnames(styles.heading, 'heading')}>
+            Work experience
+          </h1>
           <div className={styles.stacked}>
             {work.map((entry, index) => (
               <StackedCard
@@ -100,7 +104,9 @@ export default function Document() {
 
       {certificates && certificates.length ? (
         <div className="certificates">
-          <h1 className={classnames(styles.heading, 'heading')}>Certificates</h1>
+          <h1 className={classnames(styles.heading, 'heading')}>
+            Certificates
+          </h1>
           <div className={styles.grid}>
             {certificates.map((entry, index) => (
               <GridCard
