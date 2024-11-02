@@ -1,8 +1,23 @@
-.h1 {
+:root {
+  --card-gap: 1em;
+}
+
+.heading {
+  font-size: 15pt;
+  font-weight: bold;
   margin: 0;
+  margin-bottom: 0.5em;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  row-gap: var(--card-gap);
+  column-gap: var(--card-gap);
+}
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--card-gap);
 }
