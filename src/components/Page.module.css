@@ -1,2 +1,43 @@
+:root {
+  --base-font-family: Roboto, Arial, Helvetica, sans-serif;
+  --base-font-size: 10pt;
+  --heading-font-family: Inter, var(--base-font-family);
+  --uppercase-font-family: Arimo, var(--base-font-family);
+  --mono-font-family: Cousine, 'Courier New', Courier, monospace;
+
+  --paper-width: 8.5in;
+  --paper-height: 11in;
+  --paper-margin: 0.5in;
+  --content-height: calc(var(--paper-height) - 2 * var(--paper-margin));
+  --content-width: calc(var(--paper-width) - 2 * var(--paper-margin));
+
+  --section-spacing: 2em;
+}
+
+:global(.heading) {
+  font-family: var(--heading-font-family);
+}
+
+:global(.bold) {
+  font-family: var(--uppercase-font-family);
+}
+
+a {
+  color: #1d4ed8;
+}
+
 .page {
+  width: var(--paper-width);
+  padding: var(--paper-margin);
+  min-height: var(--content-height);
+
+  background-color: white;
+  font-family: var(--base-font-family);
+  font-size: var(--base-font-size);
+
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--section-spacing);
+  white-space: pre-line;
+  box-sizing: border-box;
 }
