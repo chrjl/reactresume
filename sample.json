@@ -23,7 +23,7 @@
       "name": "Company",
       "position": "President",
       "location": "Los Angeles, CA",
-      "url": "https://company.com",
+      "url": "https://example.com",
       "startDate": "2013-01-01",
       "endDate": "2014-01-01",
       "summary": "Consectetur corrupti nemo similique perspiciatis modi debitis illum incidunt? Id nisi perferendis repellat autem harum Aliquid error quas provident accusantium facilis! Accusantium doloribus molestiae consequuntur officiis harum. Recusandae odio laborum"
@@ -33,9 +33,9 @@
       "position": "Position",
       "location": "Location",
       "department": "Department",
-      "url": "https://company.com",
-      "startDate": "«start date»",
-      "endDate": "«end date»",
+      "url": "https://example.com",
+      "startDate": "2014-01-01",
+      "endDate": "2015-01-01",
       "summary": "Adipisicing eos ipsum provident aperiam reprehenderit? Voluptas sit eligendi corporis sit sequi fugiat, natus Excepturi culpa tenetur aut autem nihil! Commodi amet quia nemo incidunt odit mollitia Nihil culpa modi",
       "highlights": [
         "Adipisicing quam sint molestiae officiis ut.",
@@ -61,7 +61,7 @@
       "institution": "University",
       "url": "https://institution.com/",
       "area": "Software Development",
-      "studyType": "Bachelor",
+      "studyType": "Bachelor of Science",
       "startDate": "2011-01-01",
       "endDate": "2013-01-01",
       "score": "4.0",
@@ -70,9 +70,8 @@
     {
       "institution": "Institution",
       "url": "https://institution.com/",
-      "area": "Area",
-      "studyType": "Study type",
-      "endDate": "«end date»"
+      "area": "Computer Stuff",
+      "studyType": "Master of Science"
     }
   ],
   "certificates": [
@@ -108,6 +107,11 @@
       "keywords": ["HTML", "CSS", "JavaScript"]
     },
     {
+      "name": "Espresso",
+      "level": "Working on it",
+      "keywords": ["Cortado", "Macchiato", "Cappuccino", "Latte"]
+    },
+    {
       "name": "Lorem ipsum",
       "level": "Master",
       "keywords": [
@@ -115,17 +119,12 @@
         "Similique sed inventore nisi itaque quos A consequatur nulla maxime aliquam aperiam veniam odio numquam amet",
         "Illum similique placeat obcaecati dignissimos accusantium Voluptatum"
       ]
-    },
-    {
-      "name": "Skill",
-      "level": "Working on it",
-      "keywords": ["«Keyword1»", "«Keyword2»", "«Keyword3»"]
     }
   ],
   "languages": [
     {
       "language": "English",
-      "fluency": "Native speaker"
+      "fluency": "native"
     },
     {
       "language": "Latin"
@@ -139,7 +138,7 @@
   ],
   "projects": [
     {
-      "name": "Project 1",
+      "name": "Lorem Ipsum",
       "startDate": "2019-01-01",
       "endDate": "2021-01-01",
       "description": "Consectetur voluptates vero delectus deleniti quaerat. Quibusdam aperiam similique aliquid nemo possimus.",
@@ -147,11 +146,11 @@
         "Temporibus vero cupiditate illo hic totam voluptate Eligendi placeat provident totam dolorem qui omnis.",
         "Eos laborum qui cupiditate"
       ],
-      "url": "https://project.example.com/",
-      "keywords": ["keyword1", "keyword2"]
+      "url": "https://lorem-ipsum.example.com/",
+      "keywords": ["similique eveniet", "soluta excepturi"]
     },
     {
-      "name": "Project 2",
+      "name": "Dolor Sit",
       "startDate": "2019-01-01",
       "endDate": "2021-01-01",
       "description": "Lorem omnis voluptatum harum architecto tempore deserunt? Dolore qui distinctio odio iste consequatur?",
@@ -159,8 +158,32 @@
         "Sapiente unde sint sunt veniam quisquam?",
         "Natus ratione dicta quidem dolorum assumenda? Assumenda a esse possimus fugiat?"
       ],
-      "url": "https://project.example.com/",
-      "keywords": ["keyword1", "keyword2"]
+      "url": "https://dolor-sit.example.com/",
+      "keywords": ["deserunt", "asperiores"]
+    },
+    {
+      "name": "Amet Consectetur",
+      "startDate": "2019-01-01",
+      "endDate": "2021-01-01",
+      "description": "Fuga, voluptas quae hic eius quos, provident veniam in itaque tempore voluptatem minus ipsum dignissimos minima dolorem maiores natus voluptatibus excepturi aperiam?",
+      "highlights": [
+        "Accusantium reprehenderit recusandae sit aspernatur quos quam!",
+        "Nisi, ut molestias, ratione quidem consectetur facere voluptatem voluptatibus possimus ab recusandae ea veritatis?"
+      ],
+      "url": "https://amet-consectetur.example.com/",
+      "keywords": ["aperiam", "architecto"]
+    },
+    {
+      "name": "Adipiscing elit",
+      "startDate": "2019-01-01",
+      "endDate": "2021-01-01",
+      "description": "At incidunt tempora ipsam. Necessitatibus, quod incidunt voluptatem sint ab facilis, ex quasi aliquam, repudiandae possimus odit. Vero exercitationem alias ea nostrum?",
+      "highlights": [
+        "Ipsam assumenda ad laboriosam pariatur accusantium architecto sit provident placeat.",
+        "Nesciunt consequatur excepturi rem quod placeat quia repellat error amet sequi repudiandae?"
+      ],
+      "url": "https://facere-possimus-ducimus.example.com/",
+      "keywords": ["veritatis officia", "culpa ullam nemo"]
     }
   ]
 }
