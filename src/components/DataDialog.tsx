@@ -12,27 +12,20 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 
 import { DataContext } from '../contexts/DataContext';
 import parseObject from '../utilities/parse-json5-yaml';
 
-export default function DataDialog() {
+interface Props {
+  open: boolean;
+  handleClose: () => void;
+}
+
+export default function DataDialog({ open, handleClose }: Props) {
   const [, setJsonResume] = useContext(DataContext);
 
-  const [open, setOpen] = useState(false);
   const [source, setSource] = useState<'url' | 'file' | null>(null);
   const [url, setUrl] = useState<string>('');
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setSource(null);
-    setOpen(false);
-  };
 
   const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
@@ -73,39 +66,37 @@ export default function DataDialog() {
   };
 
   return (
-    <>
-      <ActionButton onClick={handleClickOpen} />
-
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Load JSON Resume</DialogTitle>
-        <DialogContent>
-          <SourceRadioGroup onChange={handleChangeSource} />
-          {source === 'url' ? (
-            <URLTextField onChange={handleChangeURL} />
-          ) : null}
-        </DialogContent>
-        <DialogActions>
-          {source === 'url' ? (
-            <Button onClick={handleSubmitUrl}>Load URL</Button>
-          ) : null}
-          {source === 'file' ? (
-            <FileButton onChange={handleSubmitFile} />
-          ) : null}
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
-      </Dialog>
-    </>
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>Load JSON Resume</DialogTitle>
+      <DialogContent>
+        <SourceRadioGroup value={source} onChange={handleChangeSource} />
+        {source === 'url' ? <URLTextField onChange={handleChangeURL} /> : null}
+      </DialogContent>
+      <DialogActions>
+        {source === 'url' ? (
+          <Button onClick={handleSubmitUrl}>Load URL</Button>
+        ) : null}
+        {source === 'file' ? <FileButton onChange={handleSubmitFile} /> : null}
+        <Button onClick={handleClose}>Cancel</Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 
 interface SourceRadioGroupProps {
+  value?: 'url' | 'file' | null;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function SourceRadioGroup({ onChange }: SourceRadioGroupProps) {
+function SourceRadioGroup({ value, onChange }: SourceRadioGroupProps) {
   return (
     <FormControl>
-      <RadioGroup row name="radio-buttons-group" onChange={onChange}>
+      <RadioGroup
+        row
+        name="radio-buttons-group"
+        value={value}
+        onChange={onChange}
+      >
         <FormControlLabel value="url" control={<Radio />} label="URL" />
         <FormControlLabel value="file" control={<Radio />} label="File" />
       </RadioGroup>
@@ -154,26 +145,6 @@ function FileButton({ onChange }: FileButtonProps) {
         Upload file
         <VisuallyHiddenInput type="file" onChange={onChange} />
       </Button>
-    </Box>
-  );
-}
-
-interface ActionButtonProps {
-  onClick?: () => void;
-}
-
-function ActionButton({ onClick }: ActionButtonProps) {
-  const fabStyle = {
-    position: 'fixed',
-    bottom: 16,
-    right: 16,
-  };
-
-  return (
-    <Box sx={{ '& > :not(style)': { m: 1 } }}>
-      <Fab color="primary" sx={fabStyle} aria-label="add" onClick={onClick}>
-        <AddIcon />
-      </Fab>
     </Box>
   );
 }
