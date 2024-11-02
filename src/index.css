@@ -1,3 +1,8 @@
+:root {
+  display: flex;
+  justify-content: center;
+}
+
 @media print {
   .MuiBox-root {
     display: none !important;
