@@ -1,0 +1,5 @@
+@media print {
+  .MuiBox-root {
+    display: none !important;
+  }
+}
