@@ -13,9 +13,13 @@ import {
 import styles from './Document.module.css';
 
 import { DataContext } from '../contexts/DataContext';
+import { DocumentContext } from '../contexts/DocumentContext';
 
 export default function Document() {
   const [jsonResume] = useContext(DataContext);
+  const [documentOptions] = useContext(DocumentContext);
+
+  const { headings } = documentOptions;
 
   if (!jsonResume) {
     return null;
@@ -39,16 +43,29 @@ export default function Document() {
         />
       ) : null}
 
-      {((languages && languages.length) || (skills && skills.length)) ? (
-        <DescriptionTable
-          className={styles.table}
-          data={[skills || [], languages || []].flat().filter(Boolean)}
-        />
+      {(languages && languages.length) || (skills && skills.length) ? (
+        <div className="skills">
+          {headings.skills ? (
+            <h1 className={classnames(styles.heading, 'heading')}>
+              {headings.skills}
+            </h1>
+          ) : null}
+
+          <DescriptionTable
+            className={styles.table}
+            data={[skills || [], languages || []].flat().filter(Boolean)}
+          />
+        </div>
       ) : null}
 
       {projects && projects.length ? (
         <div className="projects">
-          <h1 className={classnames(styles.heading, 'heading')}>Projects</h1>
+          {headings.projects ? (
+            <h1 className={classnames(styles.heading, 'heading')}>
+              {headings.projects}
+            </h1>
+          ) : null}
+
           <div className={styles.grid}>
             {projects.map((entry, index) => (
               <GridCard
@@ -66,9 +83,12 @@ export default function Document() {
 
       {work && work.length ? (
         <div className="work">
-          <h1 className={classnames(styles.heading, 'heading')}>
-            Work experience
-          </h1>
+          {headings.work ? (
+            <h1 className={classnames(styles.heading, 'heading')}>
+              {headings.work}
+            </h1>
+          ) : null}
+
           <div className={styles.stacked}>
             {work.map((entry, index) => (
               <StackedCard
@@ -86,7 +106,12 @@ export default function Document() {
 
       {education && education.length ? (
         <div className="education">
-          <h1 className={classnames(styles.heading, 'heading')}>Education</h1>
+          {headings.education ? (
+            <h1 className={classnames(styles.heading, 'heading')}>
+              {headings.education}
+            </h1>
+          ) : null}
+
           <div className={styles.grid}>
             {education.map((entry, index) => (
               <GridCard
@@ -104,9 +129,12 @@ export default function Document() {
 
       {certificates && certificates.length ? (
         <div className="certificates">
-          <h1 className={classnames(styles.heading, 'heading')}>
-            Certificates
-          </h1>
+          {headings.certificates ? (
+            <h1 className={classnames(styles.heading, 'heading')}>
+              {headings.certificates}
+            </h1>
+          ) : null}
+
           <div className={styles.grid}>
             {certificates.map((entry, index) => (
               <GridCard
