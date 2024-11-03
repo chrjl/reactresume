@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+import styled from '@emotion/styled';
+
+import { DocumentContext } from '../contexts/DocumentContext';
 import styles from './Page.module.css';
 
 interface Props {
@@ -5,5 +9,14 @@ interface Props {
 }
 
 export default function Page({ children }: Props) {
-  return <div className={styles.page}>{children}</div>;
+  const [documentOptions] = useContext(DocumentContext);
+  const { spacing } = documentOptions;
+
+  const Layout = styled.div({
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: `${spacing}rem`,
+  });
+
+  return <Layout className={styles.page}>{children}</Layout>;
 }

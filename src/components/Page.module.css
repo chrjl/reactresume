@@ -35,9 +35,6 @@ a {
   font-family: var(--base-font-family);
   font-size: var(--base-font-size);
 
-  display: flex;
-  flex-direction: column;
-  row-gap: var(--section-spacing);
   white-space: pre-line;
   box-sizing: border-box;
 }
