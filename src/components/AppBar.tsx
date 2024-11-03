@@ -19,7 +19,7 @@ export default function ButtonAppBar() {
             edge="start"
             color="inherit"
             component={Link}
-            href="https://github.com/chrjl/reactresume--next"
+            href="https://github.com/chrjl/reactresume"
             target="_blank"
             sx={{ mr: 2 }}
           >
