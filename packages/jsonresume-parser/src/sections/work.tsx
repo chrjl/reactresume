@@ -18,7 +18,7 @@ export default function parse(data: JSONResumeObject['work']): ResumeEntry[] {
     }) => ({
       title: position,
       subtitle: [
-        name + (location ? ` (${location})` : ''),
+        location ? `${name} (${location})` : name,
         department,
         (startDate ? `${startDate} to ` : '') + (endDate || 'present'),
       ],
