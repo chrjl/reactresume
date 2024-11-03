@@ -8,6 +8,7 @@ import type { DocumentOptions } from './contexts/DocumentContext';
 import AppBar from './components/AppBar';
 import AppMenu from './components/AppMenu';
 import DocumentDialog from './components/DocumentDialog';
+import HeadingsDialog from './components/HeadingsDialog';
 import DataDialog from './components/DataDialog';
 import FloatingActionButton from './components/FloatingActionButton';
 import Page from './components/Page';
@@ -16,11 +17,20 @@ import Document from './components/Document';
 function App() {
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [isDocumentDialogOpen, setIsDocumentDialogOpen] = useState(false);
+  const [isHeadingsDialogOpen, setIsHeadingsDialogOpen] = useState(false);
   const [isDataDialogOpen, setIsDataDialogOpen] = useState(false);
   const [jsonResume, setJsonResume] = useState({} as JSONResumeObject);
   const [documentOptions, setDocumentOptions] = useState<DocumentOptions>({
     spacing: 2,
-    headings: {},
+    headings: {
+      basics: null,
+      skills: null,
+      languages: null,
+      projects: 'Projects',
+      work: 'Work experience',
+      education: 'Education',
+      certificates: 'Certificates',
+    },
   });
 
   const handleOpenAppMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -33,6 +43,9 @@ function App() {
   const handleOpenDocumentDialog = () => setIsDocumentDialogOpen(true);
   const handleCloseDocumentDialog = () => setIsDocumentDialogOpen(false);
 
+  const handleOpenHeadingsDialog = () => setIsHeadingsDialogOpen(true);
+  const handleCloseHeadingsDialog = () => setIsHeadingsDialogOpen(false);
+
   const handleOpenDataDialog = () => setIsDataDialogOpen(true);
   const handleCloseDataDialog = () => setIsDataDialogOpen(false);
 
@@ -44,6 +57,7 @@ function App() {
           anchorEl={menuAnchorEl}
           onClose={handleCloseAppMenu}
           handleOpenDocumentDialog={handleOpenDocumentDialog}
+          handleOpenHeadingsDialog={handleOpenHeadingsDialog}
         />
 
         <Page>
@@ -54,7 +68,14 @@ function App() {
           open={isDocumentDialogOpen}
           onClose={handleCloseDocumentDialog}
         />
-        <DataDialog open={isDataDialogOpen} handleClose={handleCloseDataDialog} />
+        <HeadingsDialog
+          open={isHeadingsDialogOpen}
+          onClose={handleCloseHeadingsDialog}
+        />
+        <DataDialog
+          open={isDataDialogOpen}
+          handleClose={handleCloseDataDialog}
+        />
         <FloatingActionButton onClick={handleOpenDataDialog} />
       </DocumentContext.Provider>
     </DataContext.Provider>

@@ -6,19 +6,26 @@ interface Props {
   anchorEl: Element | null;
   onClose: () => void;
   handleOpenDocumentDialog: () => void;
+  handleOpenHeadingsDialog: () => void;
 }
 
 export default function AppMenu({
   anchorEl,
   onClose,
   handleOpenDocumentDialog,
+  handleOpenHeadingsDialog,
 }: Props) {
   const open = Boolean(anchorEl);
 
   const onClickDocument = () => {
     handleOpenDocumentDialog();
-    onClose()
-  }
+    onClose();
+  };
+
+  const onClickHeadings = () => {
+    handleOpenHeadingsDialog();
+    onClose();
+  };
 
   return (
     <Menu
@@ -33,7 +40,7 @@ export default function AppMenu({
       <MenuItem onClick={onClose}>Edit resume</MenuItem>
       <Divider />
       <MenuItem onClick={onClickDocument}>Customize document</MenuItem>
-      <MenuItem onClick={onClose}>Customize headings</MenuItem>
+      <MenuItem onClick={onClickHeadings}>Customize headings</MenuItem>
     </Menu>
   );
 }
