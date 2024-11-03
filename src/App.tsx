@@ -7,6 +7,7 @@ import type { DocumentOptions } from './contexts/DocumentContext';
 
 import AppBar from './components/AppBar';
 import AppMenu from './components/AppMenu';
+import DocumentDialog from './components/DocumentDialog';
 import DataDialog from './components/DataDialog';
 import FloatingActionButton from './components/FloatingActionButton';
 import Page from './components/Page';
@@ -14,6 +15,8 @@ import Document from './components/Document';
 
 function App() {
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const [isDocumentDialogOpen, setIsDocumentDialogOpen] = useState(false);
+  const [isDataDialogOpen, setIsDataDialogOpen] = useState(false);
   const [jsonResume, setJsonResume] = useState({} as JSONResumeObject);
   const [documentOptions, setDocumentOptions] = useState<DocumentOptions>({
     spacing: 2,
@@ -27,6 +30,11 @@ function App() {
     setMenuAnchorEl(null);
   };
 
+  const handleOpenDocumentDialog = () => setIsDocumentDialogOpen(true);
+  const handleCloseDocumentDialog = () => setIsDocumentDialogOpen(false);
+
+  const handleOpenDataDialog = () => setIsDataDialogOpen(true);
+  const handleCloseDataDialog = () => setIsDataDialogOpen(false);
 
   return (
     <DataContext.Provider value={[jsonResume, setJsonResume]}>
@@ -35,14 +43,19 @@ function App() {
         <AppMenu
           anchorEl={menuAnchorEl}
           onClose={handleCloseAppMenu}
+          handleOpenDocumentDialog={handleOpenDocumentDialog}
         />
 
         <Page>
           <Document />
         </Page>
 
-        <DataDialog open={isDialogOpen} handleClose={handleCloseDialog} />
-        <FloatingActionButton onClick={handleOpenDialog} />
+        <DocumentDialog
+          open={isDocumentDialogOpen}
+          onClose={handleCloseDocumentDialog}
+        />
+        <DataDialog open={isDataDialogOpen} handleClose={handleCloseDataDialog} />
+        <FloatingActionButton onClick={handleOpenDataDialog} />
       </DocumentContext.Provider>
     </DataContext.Provider>
   );
