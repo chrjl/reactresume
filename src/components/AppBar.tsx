@@ -5,8 +5,12 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import MoreIcon from '@mui/icons-material/MoreVert';
 
-export default function ButtonAppBar() {
+interface Props {
+  handleOpenMenu: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+export default function ButtonAppBar({ handleOpenMenu }: Props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -24,6 +28,15 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
             <GitHubIcon />
+          </IconButton>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            onClick={handleOpenMenu}
+            sx={{ mr: 2 }}
+          >
+            <MoreIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
