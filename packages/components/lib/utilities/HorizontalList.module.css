@@ -19,7 +19,7 @@
 
 .container {
   display: inline-block;
-  overflow: hidden;
+  overflow-x: clip;
   vertical-align: text-bottom;
 }
 
