@@ -15,7 +15,7 @@ import { TransitionProps } from '@mui/material/transitions';
 import CodeMirror from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
 
-import parseJsonResume from '../utilities/parse-json-resume';
+import validateJsonResume from '../utilities/validate-json-resume';
 import type { JSONResumeObject } from '@reactresume/types';
 
 import { DataContext } from '../contexts/DataContext';
@@ -49,13 +49,17 @@ export default function FullScreenDialog({ open, onClose, onAlert }: Props) {
     }
 
     try {
-      const updatedResume = parseJsonResume(value);
-      setJsonResume(updatedResume as JSONResumeObject);
+      const data = JSON.parse(value);
 
-      onClose();
+      if (validateJsonResume(data)) {
+        setJsonResume(data as JSONResumeObject);
+        onClose();
+      } else {
+        throw new SyntaxError('JSON schema error, see console for details');
+      }
     } catch (e) {
       if ((e as Error).name === 'SyntaxError') {
-        onAlert('JSON schema error, see console for details');
+        onAlert((e as Error).message);
       }
     }
   };

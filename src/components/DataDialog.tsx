@@ -13,9 +13,11 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 
+import validateJsonResume from '../utilities/validate-json-resume';
+import parseJson5Yaml from '../utilities/parse-json5-yaml';
+import type { JSONResumeObject } from '@reactresume/types';
+
 import { DataContext } from '../contexts/DataContext';
-import parseJsonResume from '../utilities/parse-json-resume';
-import { JSONResumeObject } from '@reactresume/types';
 
 interface Props {
   open: boolean;
@@ -50,32 +52,26 @@ export default function DataDialog({ open, handleClose, onAlert }: Props) {
 
     const file = e.currentTarget.files[0];
     const text = await file.text();
+    const data = parseJson5Yaml(text);
+    setJsonResume(data as JSONResumeObject);
 
-    try {
-      const data = parseJsonResume(text);
-      setJsonResume(data as JSONResumeObject);
+    handleClose();
 
-      handleClose();
-    } catch (e) {
-      if ((e as Error).name === 'SyntaxError') {
-        onAlert('JSON schema error, see console for details');
-      }
+    if (!validateJsonResume(data)) {
+      onAlert('JSON schema error, see console for details');
     }
   };
 
   const handleSubmitUrl = async () => {
     const res = await fetch(url);
     const text = await res.text();
+    const data = parseJson5Yaml(text);
+    setJsonResume(data as JSONResumeObject);
 
-    try {
-      const data = parseJsonResume(text);
-      setJsonResume(data as JSONResumeObject);
+    handleClose();
 
-      handleClose();
-    } catch (e) {
-      if ((e as Error).name === 'SyntaxError') {
-        onAlert('JSON schema error, see console for details');
-      }
+    if (!validateJsonResume(data)) {
+      onAlert('JSON schema error, see console for details');
     }
   };
 
