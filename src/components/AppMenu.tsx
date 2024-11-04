@@ -7,6 +7,7 @@ interface Props {
   onClose: () => void;
   handleOpenDocumentDialog: () => void;
   handleOpenHeadingsDialog: () => void;
+  handleOpenEditorDialog: () => void;
 }
 
 export default function AppMenu({
@@ -14,6 +15,7 @@ export default function AppMenu({
   onClose,
   handleOpenDocumentDialog,
   handleOpenHeadingsDialog,
+  handleOpenEditorDialog,
 }: Props) {
   const open = Boolean(anchorEl);
 
@@ -27,6 +29,11 @@ export default function AppMenu({
     onClose();
   };
 
+  const onClickEditor = () => {
+    handleOpenEditorDialog();
+    onClose();
+  };
+
   return (
     <Menu
       id="basic-menu"
@@ -37,7 +44,7 @@ export default function AppMenu({
         'aria-labelledby': 'basic-button',
       }}
     >
-      <MenuItem onClick={onClose}>Edit resume</MenuItem>
+      <MenuItem onClick={onClickEditor}>Edit resume</MenuItem>
       <Divider />
       <MenuItem onClick={onClickDocument}>Customize document</MenuItem>
       <MenuItem onClick={onClickHeadings}>Customize headings</MenuItem>

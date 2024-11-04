@@ -9,6 +9,7 @@ import AppBar from './components/AppBar';
 import AppMenu from './components/AppMenu';
 import DocumentDialog from './components/DocumentDialog';
 import HeadingsDialog from './components/HeadingsDialog';
+import EditorDialog from './components/EditorDialog';
 import DataDialog from './components/DataDialog';
 import FloatingActionButton from './components/FloatingActionButton';
 import Page from './components/Page';
@@ -18,6 +19,7 @@ function App() {
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [isDocumentDialogOpen, setIsDocumentDialogOpen] = useState(false);
   const [isHeadingsDialogOpen, setIsHeadingsDialogOpen] = useState(false);
+  const [isEditorDialogOpen, setIsEditorDialogOpen] = useState(false);
   const [isDataDialogOpen, setIsDataDialogOpen] = useState(false);
   const [jsonResume, setJsonResume] = useState({} as JSONResumeObject);
   const [documentOptions, setDocumentOptions] = useState<DocumentOptions>({
@@ -46,6 +48,9 @@ function App() {
   const handleOpenHeadingsDialog = () => setIsHeadingsDialogOpen(true);
   const handleCloseHeadingsDialog = () => setIsHeadingsDialogOpen(false);
 
+  const handleOpenEditorDialog = () => setIsEditorDialogOpen(true);
+  const handleCloseEditorDialog = () => setIsEditorDialogOpen(false);
+
   const handleOpenDataDialog = () => setIsDataDialogOpen(true);
   const handleCloseDataDialog = () => setIsDataDialogOpen(false);
 
@@ -58,6 +63,7 @@ function App() {
           onClose={handleCloseAppMenu}
           handleOpenDocumentDialog={handleOpenDocumentDialog}
           handleOpenHeadingsDialog={handleOpenHeadingsDialog}
+          handleOpenEditorDialog={handleOpenEditorDialog}
         />
 
         <Page>
@@ -71,6 +77,10 @@ function App() {
         <HeadingsDialog
           open={isHeadingsDialogOpen}
           onClose={handleCloseHeadingsDialog}
+        />
+        <EditorDialog
+          open={isEditorDialogOpen}
+          onClose={handleCloseEditorDialog}
         />
         <DataDialog
           open={isDataDialogOpen}
