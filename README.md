@@ -1,6 +1,6 @@
 # React Resume
 
-A fully client-side React app to process and render [JSON Resume](https://jsonresume.org/schema) data (in JSON, JSON5, YAML formats) into a printable document. The app is built using [Material UI](https://mui.com/material-ui/) components. The document is rendered with components from a bespoke React component library and styled with custom CSS, CSS-in-JS for interactive styling, and self-hosted fonts from [Fontsource](https://fontsource.org).
+A fully client-side React app to process and render [JSON Resume](https://jsonresume.org/schema) data (in JSON, JSON5, YAML formats) into a printable document. The app is built using [Material UI](https://mui.com/material-ui/) components. The document is rendered with components from a bespoke React component library and styled with custom CSS, [Emotion](https://emotion.sh) styled components (CSS-in-JS) for interactive styling, and self-hosted fonts from [Fontsource](https://fontsource.org). [React CodeMirror](https://uiwjs.github.io/react-codemirror/) is used for editing resume data in the app.
 
 💻 [Try out the app](https://chrjl.github.io/reactresume)
 
