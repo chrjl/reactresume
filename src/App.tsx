@@ -16,6 +16,8 @@ import SnackbarAlert from './components/SnackbarAlert';
 import Page from './components/Page';
 import Document from './components/Document';
 
+import validateJsonResume from './utilities/validate-json-resume';
+
 function App() {
   const [isAlert, setIsAlert] = useState(false);
   const [message, setMessage] = useState('');
@@ -41,7 +43,7 @@ function App() {
   const handleAlert = (message: string) => {
     setMessage(message);
     setIsAlert(true);
-  }
+  };
   const handleCloseAlert = () => {
     setIsAlert(false);
   };
@@ -77,9 +79,7 @@ function App() {
           handleOpenEditorDialog={handleOpenEditorDialog}
         />
 
-        <Page>
-          <Document />
-        </Page>
+        <Page>{validateJsonResume(jsonResume) && <Document />}</Page>
 
         <DocumentDialog
           open={isDocumentDialogOpen}
