@@ -1,7 +1,7 @@
 import JSON5 from 'json5';
 import YAML from 'yaml';
 
-export default function parseObject(text: string): object {
+export default function parse(text: string): object | null {
   try {
     return JSON5.parse(text);
   } catch (e) {
@@ -24,5 +24,5 @@ export default function parseObject(text: string): object {
     }
   }
 
-  return {};
+  return null;
 }
