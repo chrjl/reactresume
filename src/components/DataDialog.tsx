@@ -14,7 +14,8 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 
 import { DataContext } from '../contexts/DataContext';
-import parseObject from '../utilities/parse-json5-yaml';
+import parseJsonResume from '../utilities/parse-json-resume';
+import { JSONResumeObject } from '@reactresume/types';
 
 interface Props {
   open: boolean;
@@ -48,21 +49,29 @@ export default function DataDialog({ open, handleClose }: Props) {
 
     const file = e.currentTarget.files[0];
     const text = await file.text();
-    const data = parseObject(text);
 
-    setJsonResume(data);
+    try {
+      const data = parseJsonResume(text);
+      setJsonResume(data as JSONResumeObject);
 
-    handleClose();
+      handleClose();
+    } catch (e) {
+      alert(e);
+    }
   };
 
   const handleSubmitUrl = async () => {
     const res = await fetch(url);
     const text = await res.text();
-    const data = parseObject(text);
 
-    setJsonResume(data);
+    try {
+      const data = parseJsonResume(text);
+      setJsonResume(data as JSONResumeObject);
 
-    handleClose();
+      handleClose();
+    } catch (e) {
+      alert(e);
+    }
   };
 
   return (
