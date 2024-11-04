@@ -14,9 +14,9 @@ export default function parse(
     phone,
     url = '',
     profiles = [],
-    location,
+    location = {city: '', region: '', countryCode: ''},
   } = data;
-  const { city, region, countryCode } = location;
+  const { city = '', region = '', countryCode = '' } = location;
 
   return [
     {
