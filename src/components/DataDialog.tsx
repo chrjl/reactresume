@@ -20,9 +20,10 @@ import { JSONResumeObject } from '@reactresume/types';
 interface Props {
   open: boolean;
   handleClose: () => void;
+  onAlert: (message: string) => void;
 }
 
-export default function DataDialog({ open, handleClose }: Props) {
+export default function DataDialog({ open, handleClose, onAlert }: Props) {
   const [, setJsonResume] = useContext(DataContext);
 
   const [source, setSource] = useState<'url' | 'file' | null>(null);
@@ -56,7 +57,9 @@ export default function DataDialog({ open, handleClose }: Props) {
 
       handleClose();
     } catch (e) {
-      alert(e);
+      if ((e as Error).name === 'SyntaxError') {
+        onAlert('JSON schema error, see console for details');
+      }
     }
   };
 
@@ -70,7 +73,9 @@ export default function DataDialog({ open, handleClose }: Props) {
 
       handleClose();
     } catch (e) {
-      alert(e);
+      if ((e as Error).name === 'SyntaxError') {
+        onAlert('JSON schema error, see console for details');
+      }
     }
   };
 

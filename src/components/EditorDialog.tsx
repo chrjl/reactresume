@@ -32,9 +32,10 @@ const Transition = forwardRef(function Transition(
 interface Props {
   open: boolean;
   onClose: () => void;
+  onAlert: (message: string) => void;
 }
 
-export default function FullScreenDialog({ open, onClose }: Props) {
+export default function FullScreenDialog({ open, onClose, onAlert }: Props) {
   const [jsonResume, setJsonResume] = useContext(DataContext);
   const [value, setValue] = useState<string | null>(null);
 
@@ -48,13 +49,13 @@ export default function FullScreenDialog({ open, onClose }: Props) {
     }
 
     try {
-      const updatedResume = parseJsonResume(value)
+      const updatedResume = parseJsonResume(value);
       setJsonResume(updatedResume as JSONResumeObject);
 
       onClose();
     } catch (e) {
       if ((e as Error).name === 'SyntaxError') {
-        alert('JSON schema error, see console for details');
+        onAlert('JSON schema error, see console for details');
       }
     }
   };
