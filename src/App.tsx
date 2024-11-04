@@ -12,10 +12,13 @@ import HeadingsDialog from './components/HeadingsDialog';
 import EditorDialog from './components/EditorDialog';
 import DataDialog from './components/DataDialog';
 import FloatingActionButton from './components/FloatingActionButton';
+import SnackbarAlert from './components/SnackbarAlert';
 import Page from './components/Page';
 import Document from './components/Document';
 
 function App() {
+  const [isAlert, setIsAlert] = useState(false);
+  const [message, setMessage] = useState('');
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [isDocumentDialogOpen, setIsDocumentDialogOpen] = useState(false);
   const [isHeadingsDialogOpen, setIsHeadingsDialogOpen] = useState(false);
@@ -34,6 +37,14 @@ function App() {
       certificates: 'Certificates',
     },
   });
+
+  const handleAlert = (message: string) => {
+    setMessage(message);
+    setIsAlert(true);
+  }
+  const handleCloseAlert = () => {
+    setIsAlert(false);
+  };
 
   const handleOpenAppMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setMenuAnchorEl(event.currentTarget);
@@ -81,12 +92,21 @@ function App() {
         <EditorDialog
           open={isEditorDialogOpen}
           onClose={handleCloseEditorDialog}
+          onAlert={handleAlert}
         />
         <DataDialog
           open={isDataDialogOpen}
           handleClose={handleCloseDataDialog}
+          onAlert={handleAlert}
         />
         <FloatingActionButton onClick={handleOpenDataDialog} />
+
+        <SnackbarAlert
+          open={isAlert}
+          onClose={handleCloseAlert}
+          severity="error"
+          message={message}
+        />
       </DocumentContext.Provider>
     </DataContext.Provider>
   );
