@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d dist --nojekyll"
   },
   "dependencies": {
+    "@codemirror/lang-json": "^6.0.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@fontsource-variable/arimo": "^5.1.0",
@@ -19,6 +20,7 @@
     "@fontsource/roboto": "^5.1.0",
     "@mui/icons-material": "^6.1.5",
     "@mui/material": "^6.1.5",
+    "@uiw/react-codemirror": "^4.23.6",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "classnames": "^2.5.1",
