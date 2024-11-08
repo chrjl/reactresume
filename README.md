@@ -1,6 +1,6 @@
 # React Resume
 
-A fully client-side React app to process and render [JSON Resume](https://jsonresume.org/schema) data (in JSON, JSON5, YAML formats) into a printable document. The app is built using [Material UI](https://mui.com/material-ui/) components. The document is rendered with components from a bespoke React component library and styled with custom CSS, [Emotion](https://emotion.sh) styled components (CSS-in-JS) for interactive styling, and self-hosted fonts from [Fontsource](https://fontsource.org). [React CodeMirror](https://uiwjs.github.io/react-codemirror/) is used for editing resume data in the app.
+A fully client-side React app, utilizing [Material UI](https://mui.com/material-ui/), to process and render [JSON Resume](https://jsonresume.org/schema) data (in JSON, JSON5, YAML formats) into a print-formatted HTML and PDF. The document is rendered with components from a [bespoke React component library](https://github.com/chrjl/reactresume--components) styled with custom CSS, [Emotion](https://emotion.sh) styled components for interactive styling, and self-hosted fonts from [Fontsource](https://fontsource.org). PDF generation is via [React-pdf](https://react-pdf.org), with the component library refactored into React-pdf components and styling refactored for the React-pdf StyleSheet API. [React CodeMirror](https://uiwjs.github.io/react-codemirror/) is used for editing resume data in the app.
 
 💻 [Try out the app](https://chrjl.github.io/reactresume)
 
@@ -9,6 +9,7 @@ The project is scaffolded as a [pnpm workspace](https://pnpm.io/workspaces) mono
 - [`@reactresume/types`](https://github.com/chrjl/reactresume--types)
 - [`@reactresume/jsonresume-parser`](https://github.com/chrjl/reactresume--jsonresume-parser)
 - [`@reactresume/components`](https://github.com/chrjl/reactresume--components)
+- [`@reactresume/components-reactpdf`](https://github.com/chrjl/reactresume--components-reactpdf)
 
 ## Development
 
@@ -58,3 +59,7 @@ Deploy to GitHub pages using [`gh-pages`](https://www.npmjs.com/package/gh-pages
 ```
 npm run deploy
 ```
+
+## Notes/issues
+
+- The PDFViewer component provided by `react-pdf` has a bug that does not allow Context to be passed through [(#743)](https://github.com/diegomura/react-pdf/issues/743). The workaround used here is to include another instance of context provider as a child component of the PDFViewer component.
