@@ -21,6 +21,7 @@ import FloatingActionButton from './components/FloatingActionButton';
 import SnackbarAlert from './components/SnackbarAlert';
 import Page from './components/Page';
 import Document from './components/Document';
+import PDFResume from './components/PDFResume';
 
 import validateJsonResume from './utilities/validate-json-resume';
 
@@ -101,6 +102,7 @@ function App() {
               >
                 <PDFDocument>
                   <PDFPage size="LETTER" style={{ padding: '0.5in' }}>
+                    <PDFResume />
                   </PDFPage>
                 </PDFDocument>
               </DocumentContext.Provider>
