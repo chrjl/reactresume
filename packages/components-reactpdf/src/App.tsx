@@ -1,5 +1,12 @@
 import { PDFViewer } from '@react-pdf/renderer';
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  Font,
+} from '@react-pdf/renderer';
 
 import {
   HorizontalList,
@@ -10,10 +17,33 @@ import {
   StackedCard,
   GridCard,
 } from '../lib/main';
+
 import sampleData from './assets/sample-card-data.json';
 import loremArr from './assets/lorem-array.json';
 
-const { title, subtitle, note, description, highlights } = sampleData;
+import Inter from './assets/Inter-Regular.ttf';
+import InterBold from './assets/Inter-Bold.ttf';
+import Roboto from './assets/Roboto-Regular.ttf';
+import RobotoBold from './assets/Roboto-Bold.ttf';
+import Arimo from './assets/Arimo-Regular.ttf';
+import ArimoBold from './assets/Arimo-Bold.ttf';
+
+Font.register({
+  family: 'Roboto',
+  fonts: [{ src: Roboto }, { src: RobotoBold, fontWeight: 700 }],
+});
+
+Font.register({
+  family: 'Inter',
+  fonts: [{ src: Inter }, { src: InterBold, fontWeight: 700 }],
+});
+
+Font.register({
+  family: 'Arimo',
+  fonts: [{ src: Arimo }, { src: ArimoBold, fontWeight: 700 }],
+});
+
+Font.registerHyphenationCallback((word) => [word]);
 
 const styles = StyleSheet.create({
   page: {
@@ -41,6 +71,8 @@ const styles = StyleSheet.create({
     marginVertical: '5',
   },
 });
+
+const { title, subtitle, note, description, highlights } = sampleData;
 
 function App() {
   return (
