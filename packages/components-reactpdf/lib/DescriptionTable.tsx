@@ -43,7 +43,7 @@ export default function DescriptionTable({
   return (
     <View style={containerStyle}>
       {data.map(({ title, description }, index) => (
-        <View key={index} style={styles.entry}>
+        <View key={index} style={[styles.entry, rootStyles.content]}>
           <Text style={[styles.term, rootStyles.bold]}>
             {Array.isArray(title) ? title.join(' ') : title}
           </Text>

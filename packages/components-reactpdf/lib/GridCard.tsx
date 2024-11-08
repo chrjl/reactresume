@@ -19,7 +19,7 @@ export default function GridCard({
   note = [],
   description = [],
   highlights = [],
-  width = 260,
+  width = 265,
   style: inheritedStyle,
 }: Props) {
   title = [title].flat().filter(Boolean);

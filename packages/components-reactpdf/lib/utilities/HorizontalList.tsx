@@ -12,7 +12,7 @@ interface Props {
 export default function HorizontalList({
   variant = 'left',
   separator = '|',
-  separatorWidth = 20,
+  separatorWidth = 15,
   children,
   style: inheritedStyle,
 }: Props) {
