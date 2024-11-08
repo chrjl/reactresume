@@ -8,6 +8,8 @@ interface Props {
   handleOpenDocumentDialog: () => void;
   handleOpenHeadingsDialog: () => void;
   handleOpenEditorDialog: () => void;
+  isPdfDisplay: boolean;
+  handleTogglePdfDisplay: () => void;
 }
 
 export default function AppMenu({
@@ -16,6 +18,8 @@ export default function AppMenu({
   handleOpenDocumentDialog,
   handleOpenHeadingsDialog,
   handleOpenEditorDialog,
+  isPdfDisplay,
+  handleTogglePdfDisplay,
 }: Props) {
   const open = Boolean(anchorEl);
 
@@ -34,6 +38,11 @@ export default function AppMenu({
     onClose();
   };
 
+  const onClickPdf = () => {
+    handleTogglePdfDisplay();
+    onClose();
+  };
+
   return (
     <Menu
       id="basic-menu"
@@ -45,6 +54,9 @@ export default function AppMenu({
       }}
     >
       <MenuItem onClick={onClickEditor}>Edit resume</MenuItem>
+      <MenuItem onClick={onClickPdf}>
+        {isPdfDisplay ? 'Close' : 'Show'} PDF
+      </MenuItem>
       <Divider />
       <MenuItem onClick={onClickDocument}>Customize document</MenuItem>
       <MenuItem onClick={onClickHeadings}>Customize headings</MenuItem>

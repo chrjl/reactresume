@@ -19,6 +19,7 @@ import Document from './components/Document';
 import validateJsonResume from './utilities/validate-json-resume';
 
 function App() {
+  const [isPdfDisplay, setIsPdfDisplay] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
   const [message, setMessage] = useState('');
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
@@ -67,6 +68,9 @@ function App() {
   const handleOpenDataDialog = () => setIsDataDialogOpen(true);
   const handleCloseDataDialog = () => setIsDataDialogOpen(false);
 
+  const handleTogglePdfDisplay = () =>
+    setIsPdfDisplay((isPdfDisplay) => !isPdfDisplay);
+
   return (
     <DataContext.Provider value={[jsonResume, setJsonResume]}>
       <DocumentContext.Provider value={[documentOptions, setDocumentOptions]}>
@@ -77,6 +81,8 @@ function App() {
           handleOpenDocumentDialog={handleOpenDocumentDialog}
           handleOpenHeadingsDialog={handleOpenHeadingsDialog}
           handleOpenEditorDialog={handleOpenEditorDialog}
+          isPdfDisplay={isPdfDisplay}
+          handleTogglePdfDisplay={handleTogglePdfDisplay}
         />
 
         <Page>{validateJsonResume(jsonResume) && <Document />}</Page>
