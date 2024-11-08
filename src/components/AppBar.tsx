@@ -12,7 +12,7 @@ interface Props {
 }
 export default function ButtonAppBar({ handleOpenMenu }: Props) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
