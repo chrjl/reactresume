@@ -1,0 +1,7 @@
+{
+  "title": ["Title", "Title", "Title"],
+  "subtitle": ["Subtitle", "subtitle", "subtitle"],
+  "description": ["description", "description", "description"],
+  "note": ["note", "note@example.com", "https://example.com/note"],
+  "highlights": ["highlight", "highlight@example.com", "https://example.com/highlight"]
+}
