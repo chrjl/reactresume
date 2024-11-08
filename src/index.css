@@ -1,0 +1,11 @@
+#root {
+  width: 100vw;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+}
