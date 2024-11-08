@@ -4,6 +4,44 @@
 
 🗎 [Check out a catalog of included components.](https://github.com/chrjl/reactresume--components-reactpdf/blob/main/assets/catalog.pdf)
 
+## Usage
+
+### Fonts
+
+The display components in this library depend on the following fonts: Arimo, Inter, Roboto. TTF (non-variable regular and bold) versions of these fonts need to be [registered](https://react-pdf.org/fonts) before using these components.
+
+Self-hosting example:
+
+```js
+import Inter from './assets/Inter-Regular.ttf';
+import InterBold from './assets/Inter-Bold.ttf';
+import Roboto from './assets/Roboto-Regular.ttf';
+import RobotoBold from './assets/Roboto-Bold.ttf';
+import Arimo from './assets/Arimo-Regular.ttf';
+import ArimoBold from './assets/Arimo-Bold.ttf';
+
+Font.register({
+  family: 'Roboto',
+  fonts: [{ src: Roboto }, { src: RobotoBold, fontWeight: 700 }],
+});
+
+Font.register({
+  family: 'Inter',
+  fonts: [{ src: Inter }, { src: InterBold, fontWeight: 700 }],
+});
+
+Font.register({
+  family: 'Arimo',
+  fonts: [{ src: Arimo }, { src: ArimoBold, fontWeight: 700 }],
+});
+```
+
+To disable hyphenation:
+
+```js
+Font.registerHyphenationCallback(word => [word]);
+````
+
 ## Components
 
 ### Utility exports
