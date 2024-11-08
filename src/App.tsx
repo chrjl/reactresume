@@ -1,4 +1,10 @@
 import { useState } from 'react';
+import {
+  PDFViewer,
+  Document as PDFDocument,
+  Page as PDFPage,
+} from '@react-pdf/renderer';
+
 import { DataContext } from './contexts/DataContext';
 import { DocumentContext } from './contexts/DocumentContext';
 
@@ -17,6 +23,8 @@ import Page from './components/Page';
 import Document from './components/Document';
 
 import validateJsonResume from './utilities/validate-json-resume';
+
+import styles from './App.module.css';
 
 function App() {
   const [isPdfDisplay, setIsPdfDisplay] = useState(false);
@@ -85,7 +93,24 @@ function App() {
           handleTogglePdfDisplay={handleTogglePdfDisplay}
         />
 
-        <Page>{validateJsonResume(jsonResume) && <Document />}</Page>
+        {validateJsonResume(jsonResume) && isPdfDisplay ? (
+          <PDFViewer className={styles.pdfViewer}>
+            <DataContext.Provider value={[jsonResume, setJsonResume]}>
+              <DocumentContext.Provider
+                value={[documentOptions, setDocumentOptions]}
+              >
+                <PDFDocument>
+                  <PDFPage size="LETTER" style={{ padding: '0.5in' }}>
+                  </PDFPage>
+                </PDFDocument>
+              </DocumentContext.Provider>
+            </DataContext.Provider>
+          </PDFViewer>
+        ) : (
+          <Page>
+            <Document />
+          </Page>
+        )}
 
         <DocumentDialog
           open={isDocumentDialogOpen}
