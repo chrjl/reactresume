@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 interface Props {
   anchorEl: Element | null;
   onClose: () => void;
+  handleOpenDataDialog: () => void;
   handleOpenDocumentDialog: () => void;
   handleOpenHeadingsDialog: () => void;
   handleOpenEditorDialog: () => void;
@@ -15,6 +16,7 @@ interface Props {
 export default function AppMenu({
   anchorEl,
   onClose,
+  handleOpenDataDialog,
   handleOpenDocumentDialog,
   handleOpenHeadingsDialog,
   handleOpenEditorDialog,
@@ -22,6 +24,11 @@ export default function AppMenu({
   handleTogglePdfDisplay,
 }: Props) {
   const open = Boolean(anchorEl);
+
+  const onClickLoad = () => {
+    handleOpenDataDialog();
+    onClose();
+  };
 
   const onClickDocument = () => {
     handleOpenDocumentDialog();
@@ -53,9 +60,10 @@ export default function AppMenu({
         'aria-labelledby': 'basic-button',
       }}
     >
+      <MenuItem onClick={onClickLoad}>Load resume</MenuItem>
       <MenuItem onClick={onClickEditor}>Edit resume</MenuItem>
       <MenuItem onClick={onClickPdf}>
-        {isPdfDisplay ? 'Close' : 'Show'} PDF
+        {isPdfDisplay ? 'Close' : 'Open'} PDF
       </MenuItem>
       <Divider />
       <MenuItem onClick={onClickDocument}>Customize document</MenuItem>
