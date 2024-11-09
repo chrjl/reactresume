@@ -1,8 +1,8 @@
 :root {
   --base-font-family: Roboto, Arial, Helvetica, sans-serif;
   --base-font-size: 10pt;
-  --heading-font-family: 'Inter Variable', var(--base-font-family);
-  --uppercase-font-family: 'Arimo Variable', var(--base-font-family);
+  --heading-font-family: 'Inter', var(--base-font-family);
+  --uppercase-font-family: 'Arimo', var(--base-font-family);
   --mono-font-family: Cousine, 'Courier New', Courier, monospace;
 
   --paper-width: 8.5in;
