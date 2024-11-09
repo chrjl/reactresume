@@ -17,11 +17,16 @@ import DocumentDialog from './components/DocumentDialog';
 import HeadingsDialog from './components/HeadingsDialog';
 import EditorDialog from './components/EditorDialog';
 import DataDialog from './components/DataDialog';
-import FloatingActionButton from './components/FloatingActionButton';
+import SpeedDial from './components/SpeedDial';
 import SnackbarAlert from './components/SnackbarAlert';
 import Page from './components/Page';
 import Document from './components/Document';
 import PDFResume from './components/PDFResume';
+
+import UploadIcon from '@mui/icons-material/Upload';
+import EditIcon from '@mui/icons-material/Edit';
+import PdfIcon from '@mui/icons-material/PictureAsPdf';
+import HtmlIcon from '@mui/icons-material/Html';
 
 import validateJsonResume from './utilities/validate-json-resume';
 
@@ -32,6 +37,7 @@ function App() {
   const [isAlert, setIsAlert] = useState(false);
   const [message, setMessage] = useState('');
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const [isSpeedDialOpen, setIsSpeedDialOpen] = useState(false);
   const [isDocumentDialogOpen, setIsDocumentDialogOpen] = useState(false);
   const [isHeadingsDialogOpen, setIsHeadingsDialogOpen] = useState(false);
   const [isEditorDialogOpen, setIsEditorDialogOpen] = useState(false);
@@ -65,6 +71,9 @@ function App() {
     setMenuAnchorEl(null);
   };
 
+  const handleOpenSpeedDial = () => setIsSpeedDialOpen(true);
+  const handleCloseSpeedDial = () => setIsSpeedDialOpen(false);
+
   const handleOpenDocumentDialog = () => setIsDocumentDialogOpen(true);
   const handleCloseDocumentDialog = () => setIsDocumentDialogOpen(false);
 
@@ -80,6 +89,24 @@ function App() {
   const handleTogglePdfDisplay = () =>
     setIsPdfDisplay((isPdfDisplay) => !isPdfDisplay);
 
+  const speedDialActions = [
+    {
+      icon: isPdfDisplay ? <HtmlIcon /> : <PdfIcon />,
+      name: isPdfDisplay ? 'Close PDF' : 'Open PDF',
+      handleClick: handleTogglePdfDisplay,
+    },
+    {
+      icon: <EditIcon />,
+      name: 'Edit JSON Resume',
+      handleClick: handleOpenEditorDialog,
+    },
+    {
+      icon: <UploadIcon />,
+      name: 'Load JSON Resume',
+      handleClick: handleOpenDataDialog,
+    },
+  ];
+
   return (
     <DataContext.Provider value={[jsonResume, setJsonResume]}>
       <DocumentContext.Provider value={[documentOptions, setDocumentOptions]}>
@@ -87,6 +114,7 @@ function App() {
         <AppMenu
           anchorEl={menuAnchorEl}
           onClose={handleCloseAppMenu}
+          handleOpenDataDialog={handleOpenDataDialog}
           handleOpenDocumentDialog={handleOpenDocumentDialog}
           handleOpenHeadingsDialog={handleOpenHeadingsDialog}
           handleOpenEditorDialog={handleOpenEditorDialog}
@@ -109,9 +137,11 @@ function App() {
             </DataContext.Provider>
           </PDFViewer>
         ) : (
-          <Page>
-            <Document />
-          </Page>
+          // <div style={{ overflow: 'auto' }}>
+            <Page>
+              <Document />
+            </Page>
+          // </div>
         )}
 
         <DocumentDialog
@@ -132,7 +162,13 @@ function App() {
           handleClose={handleCloseDataDialog}
           onAlert={handleAlert}
         />
-        <FloatingActionButton onClick={handleOpenDataDialog} />
+        {/* <FloatingActionButton onClick={handleOpenDataDialog} /> */}
+        <SpeedDial
+          open={isSpeedDialOpen}
+          onOpen={handleOpenSpeedDial}
+          onClose={handleCloseSpeedDial}
+          actions={speedDialActions}
+        />
 
         <SnackbarAlert
           open={isAlert}
