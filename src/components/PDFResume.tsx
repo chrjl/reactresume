@@ -34,6 +34,8 @@ Font.register({
   fonts: [{ src: Arimo }, { src: ArimoBold, fontWeight: 700 }],
 });
 
+Font.registerHyphenationCallback((word) => [word]);
+
 export default function PDFResume() {
   const [jsonResume] = useContext(DataContext);
   const [documentOptions] = useContext(DocumentContext);
