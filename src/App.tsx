@@ -137,11 +137,9 @@ function App() {
             </DataContext.Provider>
           </PDFViewer>
         ) : (
-          // <div style={{ overflow: 'auto' }}>
-            <Page>
-              <Document />
-            </Page>
-          // </div>
+          <Page>
+            <Document />
+          </Page>
         )}
 
         <DocumentDialog
@@ -162,7 +160,6 @@ function App() {
           handleClose={handleCloseDataDialog}
           onAlert={handleAlert}
         />
-        {/* <FloatingActionButton onClick={handleOpenDataDialog} /> */}
         <SpeedDial
           open={isSpeedDialOpen}
           onOpen={handleOpenSpeedDial}
