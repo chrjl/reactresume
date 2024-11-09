@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
   heading: {
     fontFamily: 'Inter',
     fontWeight: 'bold',
+    lineHeight: 1,
   },
   bold: {
     fontFamily: 'Arimo',

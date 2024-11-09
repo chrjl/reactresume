@@ -48,7 +48,7 @@ export default function GridCard({
       color: '#4b5563',
     },
     body: {
-      marginTop: 0.25,
+      marginTop: 2.5,
     },
     highlights: {
       margin: 0,
