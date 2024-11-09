@@ -76,7 +76,7 @@ export default function DataDialog({ open, handleClose, onAlert }: Props) {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open} onClose={handleClose} disableRestoreFocus={true}>
       <DialogTitle>Load JSON Resume</DialogTitle>
       <DialogContent>
         <SourceRadioGroup value={source} onChange={handleChangeSource} />

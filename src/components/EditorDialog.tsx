@@ -70,6 +70,7 @@ export default function FullScreenDialog({ open, onClose, onAlert }: Props) {
       open={open}
       onClose={onClose}
       TransitionComponent={Transition}
+      disableRestoreFocus={true}
     >
       <AppBar sx={{ position: 'relative' }}>
         <Toolbar>
