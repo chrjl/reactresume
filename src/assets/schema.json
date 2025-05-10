@@ -279,7 +279,7 @@
             "description": "e.g. Certified Kubernetes Administrator"
           },
           "date": {
-            "$ref": "#/definitions/iso8601"
+            "type": ["number", "string"]
           },
           "url": {
             "type": "string",
