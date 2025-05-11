@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { Text, View, Font, StyleSheet } from '@react-pdf/renderer';
+import { Text, Link, View, Font, StyleSheet } from '@react-pdf/renderer';
+import Markdown from 'react-markdown';
 
 import parseJsonResume from '@reactresume/jsonresume-parser';
 
@@ -18,6 +19,8 @@ import Roboto from '../assets/Roboto-Regular.ttf';
 import RobotoBold from '../assets/Roboto-Bold.ttf';
 import Arimo from '../assets/Arimo-Regular.ttf';
 import ArimoBold from '../assets/Arimo-Bold.ttf';
+import Cousine from '../assets/Cousine-Regular.ttf';
+import CousineBold from '../assets/Cousine-Bold.ttf';
 
 Font.register({
   family: 'Roboto',
@@ -32,6 +35,11 @@ Font.register({
 Font.register({
   family: 'Arimo',
   fonts: [{ src: Arimo }, { src: ArimoBold, fontWeight: 700 }],
+});
+
+Font.register({
+  family: 'Cousine',
+  fonts: [{ src: Cousine }, { src: CousineBold, fontWeight: 700 }],
 });
 
 Font.registerHyphenationCallback((word) => [word]);
@@ -71,7 +79,34 @@ export default function PDFResume() {
     stacked: {
       rowGap: 10,
     },
+    code: {
+      fontFamily: 'Cousine',
+      fontWeight: 'bold',
+      fontSize: 9,
+    },
+    strong: {
+      fontWeight: 'bold',
+    },
+    em: {},
   });
+
+  const renderers = {
+    p: ({ children }: { children?: React.ReactNode }) => (
+      <Text>{children}</Text>
+    ),
+    code: ({ children }: { children?: React.ReactNode }) => (
+      <Text style={styles.code}>{children}</Text>
+    ),
+    strong: ({ children }: { children?: React.ReactNode }) => (
+      <Text style={styles.strong}>{children}</Text>
+    ),
+    em: ({ children }: { children?: React.ReactNode }) => (
+      <Text style={styles.em}>{children}</Text>
+    ),
+    a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
+      <Link src={href}>{children}</Link>
+    ),
+  };
 
   return (
     <View style={styles.container}>
@@ -110,8 +145,12 @@ export default function PDFResume() {
                 title={entry.title}
                 subtitle={entry.subtitle}
                 note={entry.note}
-                description={entry.description}
-                highlights={entry.highlights}
+                description={entry.description?.map((description) => (
+                  <Markdown components={renderers}>{description}</Markdown>
+                ))}
+                highlights={entry.highlights?.map((highlight) => (
+                  <Markdown components={renderers}>{highlight}</Markdown>
+                ))}
               />
             ))}
           </View>
@@ -131,8 +170,12 @@ export default function PDFResume() {
                 title={entry.title}
                 subtitle={entry.subtitle}
                 note={entry.note}
-                description={entry.description}
-                highlights={entry.highlights}
+                description={entry.description?.map((description) => (
+                  <Markdown components={renderers}>{description}</Markdown>
+                ))}
+                highlights={entry.highlights?.map((highlight) => (
+                  <Markdown components={renderers}>{highlight}</Markdown>
+                ))}
               />
             ))}
           </View>

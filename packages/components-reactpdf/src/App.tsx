@@ -201,7 +201,9 @@ function App() {
                 title={title}
                 subtitle={subtitle}
                 note={note}
-                description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis ipsam non blanditiis labore vero hic libero, ratione quod atque illo soluta, odit corporis aspernatur inventore temporibus pariatur alias! Ratione, tempora."
+                description={[
+                  'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis ipsam non blanditiis labore vero hic libero, ratione quod atque illo soluta, odit corporis aspernatur inventore temporibus pariatur alias! Ratione, tempora.',
+                ]}
                 highlights={highlights}
               />
             </View>
@@ -214,8 +216,9 @@ function App() {
                 sampleData,
                 {
                   title: 'Lorem ipsum',
-                  description:
+                  description: [
                     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum in placeat dolor expedita, modi distinctio? Accusamus, minus debitis maxime aperiam porro architecto! Alias commodi doloremque molestiae eligendi, dolorem iure sapiente.',
+                  ],
                 },
               ]}
               style={styles.example}
