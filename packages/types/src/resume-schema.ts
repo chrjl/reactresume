@@ -12,6 +12,6 @@ export interface ResumeEntry {
   title: string | string[];
   subtitle?: string | string[];
   note?: string | string[];
-  description?: string | string[];
-  highlights?: string | string[];
+  description?: string[];
+  highlights?: string[];
 }
