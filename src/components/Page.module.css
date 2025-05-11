@@ -38,3 +38,17 @@ a {
   white-space: pre-line;
   box-sizing: border-box;
 }
+
+.page code {
+  font-family: var(--mono-font-family);
+  font-size: 90%;
+  font-weight: 800;
+}
+
+.page strong {
+  font-weight: 800;
+}
+
+.page em {
+  font-style: 'italic';
+}

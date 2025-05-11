@@ -41,9 +41,15 @@ export default function HeadingCard({
       {highlights.length ? (
         <div className={classnames(styles.highlights, 'highlights')}>
           <HorizontalList>
-            {[note, highlights].flat().map((entry, index) => (
-              <LinkifiedSpan value={entry} key={index} />
-            ))}
+            {[note, highlights]
+              .flat()
+              .map((entry, index) =>
+                typeof entry === 'string' ? (
+                  <LinkifiedSpan value={entry} key={index} />
+                ) : (
+                  entry
+                )
+              )}
           </HorizontalList>
         </div>
       ) : null}

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import classnames from 'classnames';
+import Markdown from 'react-markdown';
 
 import parseJsonResume from '@reactresume/jsonresume-parser';
 
@@ -73,8 +74,12 @@ export default function Document() {
                 title={entry.title}
                 subtitle={entry.subtitle}
                 note={entry.note}
-                description={entry.description}
-                highlights={entry.highlights}
+                description={entry.description?.map((description) => (
+                  <Markdown>{description}</Markdown>
+                ))}
+                highlights={entry.highlights?.map((highlight) => (
+                  <Markdown>{highlight}</Markdown>
+                ))}
               />
             ))}
           </div>
@@ -96,8 +101,12 @@ export default function Document() {
                 title={entry.title}
                 subtitle={entry.subtitle}
                 note={entry.note}
-                description={entry.description}
-                highlights={entry.highlights}
+                description={entry.description?.map((description) => (
+                  <Markdown>{description}</Markdown>
+                ))}
+                highlights={entry.highlights?.map((highlight) => (
+                  <Markdown>{highlight}</Markdown>
+                ))}
               />
             ))}
           </div>
