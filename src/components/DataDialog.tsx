@@ -28,7 +28,7 @@ interface Props {
 export default function DataDialog({ open, handleClose, onAlert }: Props) {
   const [, setJsonResume] = useContext(DataContext);
 
-  const [source, setSource] = useState<'url' | 'file' | null>(null);
+  const [source, setSource] = useState<'url' | 'file' | null>('url');
   const [url, setUrl] = useState<string>('sample.json');
 
   const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) => {

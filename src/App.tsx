@@ -41,7 +41,7 @@ function App() {
   const [isDocumentDialogOpen, setIsDocumentDialogOpen] = useState(false);
   const [isHeadingsDialogOpen, setIsHeadingsDialogOpen] = useState(false);
   const [isEditorDialogOpen, setIsEditorDialogOpen] = useState(false);
-  const [isDataDialogOpen, setIsDataDialogOpen] = useState(false);
+  const [isDataDialogOpen, setIsDataDialogOpen] = useState(true);
   const [jsonResume, setJsonResume] = useState({} as JSONResumeObject);
   const [documentOptions, setDocumentOptions] = useState<DocumentOptions>({
     spacing: 2,
